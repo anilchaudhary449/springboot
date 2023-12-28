@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,4 +41,12 @@ public class studentController {
 		return new Student(firstName,lastName);
 	}
 
+	
+	//build a rest API to handle query parameters
+	//http://localhost:8080/student/query?firstName=Ramesh&lastName=Chaudhary
+	@GetMapping("/student/query")
+	public Student studentQueryPara(@RequestParam(name="firstName")String firstName, @RequestParam(name="lastName") String lastName) {
+		return new Student(firstName,lastName);
+		
+	}
 }
